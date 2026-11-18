@@ -9,7 +9,7 @@
     ../../modules/desktop
     ../../modules/gaming
     ../../modules/services
-  ] ++ lib.optionals (builtins.pathExists .local.nix) [ ./local.nix ];
+  ];
 
   system.stateVersion = "26.05";
 }
