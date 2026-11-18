@@ -1,0 +1,9 @@
+# .sops.yaml
+keys:
+  - &admin_main age1yszwzq9dsn4tf35z3qn9l4qdzwj5jhpyhzk4x2k8wnnwulqraaqqq7d0am # Replace with your public key from Step 2
+
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+          - *admin_main
