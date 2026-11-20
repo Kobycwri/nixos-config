@@ -2,7 +2,7 @@
 { pkgs, inputs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    sway foot fuzzel swaybg swayidle swaylock
+    foot fuzzel swaybg swayidle swaylock
     grim slurp wl-clipboard playerctl
     wiremix android-tools librewolf
     wl-gammarelay-rs wayfreeze
@@ -10,4 +10,5 @@
     inputs.quadra.packages.${pkgs.stdenv.hostPlatform.system}.quadra
     catppuccin-cursors.macchiatoMauve
   ];
+  programs.sway.enable = true;
 }

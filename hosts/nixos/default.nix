@@ -9,6 +9,7 @@
     ../../modules/desktop
     ../../modules/gaming
     ../../modules/services
+    ../../modules/agents
   ];
 
   system.stateVersion = "26.05";
