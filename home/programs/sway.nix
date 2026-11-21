@@ -54,17 +54,43 @@
       # options themselves live under `wayland.windowManager.sway`.
       menu = "fuzzel";
       terminal = "foot";
-      keybindings."${config.wayland.windowManager.sway.config.modifier}+b" =
-        "exec ${pkgs.broot}/bin/broot";
+
+      # Disable the generated default bar (i3status, bottom); the custom bar
+      # in extraConfig below is the only one.
+      bars = [ ];
+
+      # Per-device input settings (sway-input(5))
+      input = {
+        "type:keyboard" = {
+          xkb_layout = "gb";
+          repeat_delay = "250";
+          repeat_rate = "40";
+        };
+        "type:pointer" = {
+          accel_profile = "flat";
+        };
+      };
+
+      # Per-output settings (sway-output(5))
+      output = {
+        "HDMI-A-1" = {
+          mode = "1920x1080@60Hz";
+          position = "1920,0";
+        };
+      };
+
+      # Per-seat settings (sway-input(5)); replaces the raw `seat` line below
+      seat = {
+        "seat0" = {
+          xcursor_theme = "catppuccin-macchiato-mauve-cursors 24";
+        };
+      };
     };
 
     # Anything not covered by the structured options:
     extraConfig = ''
       ### Font
       font pango:Inter 10
-
-      ### Cursor
-      seat seat0 xcursor_theme catppuccin-macchiato-mauve-cursors 24
 
       ### Idle configuration
       exec swayidle -w \
@@ -98,6 +124,10 @@
       bindsym --release ${config.wayland.windowManager.sway.config.modifier}+Print exec $HOME/.scripts/screenshot-window.sh
       # Entire desktop - press Alt+Print
       bindsym --release Alt+Print exec $HOME/.scripts/screenshot-full.sh
+
+      ### Extra keybindings
+      # File browser (keeps the stock $mod+b = splith)
+      bindsym ${config.wayland.windowManager.sway.config.modifier}+Shift+b exec ${pkgs.broot}/bin/broot
 
       ### Brightness / color temperature (software, via wl-gammarelay-rs)
       # Decrease brightness
