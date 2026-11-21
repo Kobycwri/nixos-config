@@ -17,7 +17,7 @@
     broot
     grim
     slurp
-    grimshot
+    sway-contrib.grimshot
     grimblast
     swaylock
     swaybg
@@ -26,7 +26,7 @@
     playerctl
     wl-gammarelay-rs
     yazi
-    nvim
+    vim
     librewolf
   ];
 
