@@ -1,44 +1,60 @@
-# Sway: declarative home-manager configuration, migrated from the
-# non-declarative ~/.config/sway setup (default sway config + customizations).
-{ config, pkgs, lib, ... }:
+# Sway: declarative home-manager configuration.
+#
+# Migrated from the non-declarative ~/.config/sway setup (which was just the
+# stock sway default config plus a few tweaks). The structured
+# `wayland.windowManager.sway.config` options cover the stock sway bindings
+# and layout, and anything not expressible (font, idle hook, media/brightness
+# keybindings) is added via `wayland.windowManager.sway.extraConfig`.
+{ config, pkgs, ... }:
 {
-  # Sway session dependencies used in key bindings below.
-  # Declared via home.packages so they live in the home profile (kept even if
-  # sway itself is later disabled); pinned by their store paths in the
-  # generated sway config.
+  # Sway session dependencies used in key bindings below. Declared via
+  # home.packages so they live in the home profile (kept even if sway itself
+  # is later disabled); the generated sway config pins their store paths.
   home.packages = with pkgs; [
-    foot wofi broot
-    grim slurp grimshot grimblast
-    swaylock swaybg swayidle
-    wl-clipboard playerctl brightnessctl
-    pactl yazi nvim librewolf
+    foot
+    wofi
+    broot
+    grim
+    slurp
+    grimshot
+    grimblast
+    swaylock
+    swaybg
+    swayidle
+    wl-clipboard
+    playerctl
+    brightnessctl
+    pactl
+    yazi
+    nvim
+    librewolf
   ];
 
-  programs.sway = {
+  # Use the sway package installed by the system (modules/desktop/sway.nix),
+  # not the one home-manager would pull into the home profile.
+  programs.sway.package = null;
+
+  wayland.windowManager.sway = {
     enable = true;
     xwayland.enable = true;
 
-    # Modifier: $mod = Mod4 (Super/Win key), the default.
-    modifier = "Mod4";
+    config = {
+      # Workspaces / gaps
+      workspaceAutoBackAndForth = true;
+      gaps = {
+        inner = 4;
+        outer = 4;
+      };
 
-    # Workspaces / gaps
-    workspaceBackAndForth = true;
-    gaps = {
-      inner = 4;
-      outer = 4;
+      # Key bindings (the structured options cover the stock sway bindings)
+      menu = "${pkgs.wofi}/bin/wofi --show-drun";
+      terminal = "${pkgs.foot}/bin/foot";
+      keybindings."${config.wayland.windowManager.sway.config.modifier}+b" =
+        "exec ${pkgs.broot}/bin/broot";
     };
 
-    # Key bindings (structured options cover the default sway config bindings)
-    menu = "${pkgs.wofi}/bin/wofi --show-drun";
-    terminal = "${pkgs.foot}/bin/foot";
-    editor = "${pkgs.nvim}/bin/nvim";
-    files = "${pkgs.yazi}/bin/yazi";
-    browser = "${pkgs.librewolf}/bin/librewolf";
-    music = "${pkgs.playerctl}/bin/playerctl play-pause";
-
-    # Extra raw sway config: font, idle hook, and media/volume/brightness
-    # bindings that are not covered by the structured options.
-    config = ''
+    # Anything not covered by the structured options:
+    extraConfig = ''
       ### Font
       font pango:Inter 10
 
