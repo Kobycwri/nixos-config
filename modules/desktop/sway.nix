@@ -25,6 +25,7 @@
     swaybg
     swayidle
     wiremix
+    wayfreeze
     inputs.quadra.packages.${pkgs.stdenv.hostPlatform.system}.quadra
   ];
 
