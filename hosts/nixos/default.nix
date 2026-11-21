@@ -10,6 +10,7 @@
     ../../modules/gaming
     ../../modules/services
     ../../modules/agents
+    ./home-manager.nix
   ];
 
   system.stateVersion = "26.05";

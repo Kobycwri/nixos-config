@@ -33,9 +33,10 @@
     };
 
     homeConfigurations."main@nixos" = home-manager.lib.homeManagerConfiguration {
+      extraSpecialArgs = { inputs = inputs; };
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       modules = [
-        ./hosts/nixos/home.nix
+        ./home/nixos.nix
       ];
     };
   };
