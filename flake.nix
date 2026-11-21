@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,13 +21,21 @@
     };
   };
 
-  outputs = { self, nixpkgs, sops-nix, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, sops-nix, ... }@inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; }; # enables flake inputs to modules
       modules = [ 
         ./hosts/nixos 
         sops-nix.nixosModules.sops
+        home-manager.nixosModules.home-manager
+      ];
+    };
+
+    homeConfigurations."main@nixos" = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      modules = [
+        ./hosts/nixos/home.nix
       ];
     };
   };
