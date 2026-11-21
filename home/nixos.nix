@@ -6,7 +6,7 @@
 { ... }:
 {
   imports = [
-    ../../home/common.nix
-    ../../home/programs/sway.nix
+    ./common.nix
+    ./programs/sway.nix
   ];
 }
