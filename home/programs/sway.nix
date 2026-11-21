@@ -39,6 +39,9 @@
     xwayland = true;
 
     config = {
+      # Super key for all default keybindings
+      modifier = "Mod4";
+
       # Workspaces / gaps
       workspaceAutoBackAndForth = true;
       gaps = {
