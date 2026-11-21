@@ -7,5 +7,6 @@
     btop-cuda
     fastfetch
     nvtopPackages.nvidia
+    android-tools
   ];
 }

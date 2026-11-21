@@ -15,6 +15,10 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    quadra = {
+      url = "github:QuadraHQ/quadra";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, sops-nix, ... }@inputs: {
