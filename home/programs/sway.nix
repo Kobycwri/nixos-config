@@ -32,7 +32,7 @@
 
   # Use the sway package installed by the system (modules/desktop/sway.nix),
   # not the one home-manager would pull into the home profile.
-  programs.sway.package = null;
+  wayland.windowManager.sway.package = null;
 
   wayland.windowManager.sway = {
     enable = true;
@@ -47,6 +47,8 @@
       };
 
       # Key bindings (the structured options cover the stock sway bindings)
+      # `services.windowManager.sway` is the module file location, but the
+      # options themselves live under `wayland.windowManager.sway`.
       menu = "fuzzel";
       terminal = "foot";
       keybindings."${config.wayland.windowManager.sway.config.modifier}+b" =
@@ -68,10 +70,10 @@
         resume 'swaymsg "output * power on"' \
         before-sleep 'swaylock -f -c catppuccin'
 
-      # Color management (wl-gammarelay-rs)
+      ### Color management (wl-gammarelay-rs)
       exec wl-gammarelay-rs
 
-      ### Volume / media (wpctl, part of wireplumber)
+      ### Volume / media (wpctl, from wireplumber in systemPackages)
       bindsym --locked XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
       bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
       bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
