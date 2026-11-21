@@ -15,10 +15,6 @@
     foot
     fuzzel
     broot
-    grim
-    slurp
-    sway-contrib.grimshot
-    grimblast
     swaylock
     swaybg
     swayidle
