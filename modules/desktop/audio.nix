@@ -1,7 +1,7 @@
 { ... }:
 {
   services.pulseaudio.enable = false;
-  security.rttkit.enable = true;
+  security.rtkit.enable = true;
 
   services.pipewire = {
     enable = true;

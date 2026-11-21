@@ -12,3 +12,7 @@ MCP nix tool syntax:
 - channel is "unstable"/"stable", NOT "nixos-unstable".
 - browse is only for home-manager/darwin/nixvim/nvf/noogle, never nixos.
 - sops.* options are external (sops-nix); not in the nixos DB — verify via the pinned source.
+- nix tool: argv[0] MUST be the binary name.
+  Use ["nix","eval",".#..."], ["nix","flake","check"],
+  ["nixos-rebuild","build","--flake",".#nixos"].
+  Never ["eval",...] — prepend the binary.
