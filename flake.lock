@@ -133,33 +133,11 @@
         "type": "github"
       }
     },
-    "quadra": {
-      "inputs": {
-        "flake-utils": "flake-utils",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1795067515,
-        "narHash": "sha256-ZK+eOoR0iXwOORJgU38I6NpgLflhLXfgWRA1zAv6QiA=",
-        "owner": "QuadraHQ",
-        "repo": "quadra",
-        "rev": "a021917d6c4785dc777eaa2e2801cee2f6a28e40",
-        "type": "github"
-      },
-      "original": {
-        "owner": "QuadraHQ",
-        "repo": "quadra",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "llm-agents": "llm-agents",
         "nixpkgs": "nixpkgs",
-        "quadra": "quadra",
         "sops-nix": "sops-nix"
       }
     },

@@ -12,12 +12,18 @@
   # home.packages so they live in the home profile (kept even if sway itself
   # is later disabled); the generated sway config pins their store paths.
   home.packages = with pkgs; [
+    broot
     foot
     fuzzel
-    broot
+    grim
+    slurp
+    sway-contrib.grimshot
+    grimblast
+    swayidle
     swaylock
     swaybg
-    swayidle
+    wiremix
+    wayfreeze
     wl-clipboard
     playerctl
     wl-gammarelay-rs
