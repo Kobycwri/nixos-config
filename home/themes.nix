@@ -15,9 +15,12 @@
     btop.enable = true;
   };
 
-  # You can enable theming for other programs here too, for example:
-  # catppuccin.starship.enable = true;
-  # catppuccin.btop.enable = true;
+  programs = {
+    btop = {
+      enable = true;
+      package = pkgs.btop-cuda;
+    };
+  };
 
   home.pointerCursor = {
     enable = true;
