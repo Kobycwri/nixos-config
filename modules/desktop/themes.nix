@@ -7,6 +7,13 @@
     noto-fonts-cjk-sans
     noto-fonts-color-emoji
   ];
+  
+  fonts.fontconfig.defaultFonts = {
+    monospace = [ "JetBrainsMono Nerd Font" ];
+    sansSerif = [ "Noto Sans" ];
+    serif = [ "Noto Serif" ];
+    emoji = [ "Noto Color Emoji" ];
+  };
 
   console = {
     font = "Lat2-Terminus16";
