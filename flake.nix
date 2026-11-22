@@ -19,6 +19,14 @@
       url = "github:QuadraHQ/quadra";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nightcap = {
+      url = "github:CoderDayton/nightcap";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, sops-nix, ... }@inputs: {
@@ -33,7 +41,7 @@
     };
 
     homeConfigurations."main@nixos" = home-manager.lib.homeManagerConfiguration {
-      extraSpecialArgs = { inputs = inputs; };
+      specialArgs = { inputs = inputs; };
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       modules = [
         ./home/nixos.nix

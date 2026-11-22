@@ -20,7 +20,6 @@
     sway-contrib.grimshot
     grimblast
     swayidle
-    swaylock
     swaybg
     wiremix
     wayfreeze
@@ -30,11 +29,13 @@
     yazi
     vim
     librewolf
+    theclicker
   ];
 
   # Use the sway package installed by the system (modules/desktop/sway.nix),
   # not the one home-manager would pull into the home profile.
   wayland.windowManager.sway.package = null;
+  programs.swaylock.enable = true;
 
   wayland.windowManager.sway = {
     enable = true;
@@ -45,10 +46,10 @@
       modifier = "Mod4";
 
       # Workspaces / gaps
-      workspaceAutoBackAndForth = true;
+      workspaceAutoBackAndForth = false;
       gaps = {
-        inner = 4;
-        outer = 4;
+        inner = 0;
+        outer = 0;
       };
 
       # Key bindings (the structured options cover the stock sway bindings)
@@ -96,14 +97,17 @@
 
       ### Idle configuration
       exec swayidle -w \
-        timeout 300 'swaylock -f -c catppuccin' \
+        timeout 300 'swaylock -f' \
         timeout 600 'swaymsg "output * power off"' \
         resume 'swaymsg "output * power on"' \
-        before-sleep 'swaylock -f -c catppuccin'
+        before-sleep 'swaylock -f'
 
       ### Color management (wl-gammarelay-rs)
       exec wl-gammarelay-rs
-
+      
+      ### System control
+      bindsym ${config.wayland.windowManager.sway.config.modifier}+Backspace kill
+      
       ### Volume / media (wpctl, from wireplumber in systemPackages)
       bindsym --locked XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
       bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
