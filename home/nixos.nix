@@ -10,5 +10,6 @@
     ./themes.nix
     ./programs/sway.nix
     ./programs/notification.nix
+    ./programs/coding.nix
   ];
 }
