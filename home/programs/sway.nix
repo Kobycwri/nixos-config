@@ -81,13 +81,6 @@
           position = "1920,0";
         };
       };
-
-      # Per-seat settings (sway-input(5)); replaces the raw `seat` line below
-      seat = {
-        "seat0" = {
-          xcursor_theme = "catppuccin-macchiato-mauve-cursors 24";
-        };
-      };
     };
 
     # Anything not covered by the structured options:
@@ -104,10 +97,10 @@
 
       ### Color management (wl-gammarelay-rs)
       exec wl-gammarelay-rs
-      
+
       ### System control
       bindsym ${config.wayland.windowManager.sway.config.modifier}+Backspace kill
-      
+
       ### Volume / media (wpctl, from wireplumber in systemPackages)
       bindsym --locked XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
       bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-

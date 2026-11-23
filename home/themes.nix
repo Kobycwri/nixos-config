@@ -25,9 +25,12 @@
     foot.enable = true;
   };
 
+  gtk.enable = true;
+
   home.pointerCursor = {
     enable = true;
     size = 24;
+    sway.enable = true;
     gtk.enable = true;
     x11.enable = true;
   };
