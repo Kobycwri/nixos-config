@@ -23,8 +23,8 @@
       url = "github:CoderDayton/nightcap";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    catppuccin = {
-      url = "github:catppuccin/nix";
+    stylix = {
+      url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -33,10 +33,11 @@
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; }; # enables flake inputs to modules
-      modules = [ 
-        ./hosts/nixos 
+      modules = [
+        ./hosts/nixos
         sops-nix.nixosModules.sops
         home-manager.nixosModules.home-manager
+        inputs.stylix.nixosModules.stylix
       ];
     };
 

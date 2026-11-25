@@ -1,5 +1,5 @@
 # Shared home-manager configuration (all users/hosts)
-{ pkgs, ... }:
+{ ... }:
 {
   # Enable programs and services defined in home-manager modules.
   home.stateVersion = "26.05";

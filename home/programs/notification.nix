@@ -4,7 +4,7 @@
   services.mako = {
     enable = true;
     # You can explicitly set the package if needed
-    package = pkgs.mako; 
+    package = pkgs.mako;
 
     settings = {
       # Behavior & timing
@@ -24,15 +24,6 @@
       padding = "8";
       border-size = 2;
       border-radius = 12;
-
-      # Appearance & fonts
-      background-color = "#2e3440FF";
-      text-color = "#eceff4FF";
-      border-color = "#4c566aFF";
-      progress-color = "over #a3be8cFF";
-      font = "monospace 10";
-      icons = true;
-      max-icon-size = 48;
     };
   };
 }

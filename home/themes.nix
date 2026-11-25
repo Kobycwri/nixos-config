@@ -1,37 +1,21 @@
-# home/themes.nix
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 {
-  imports = [
-    inputs.catppuccin.homeModules.catppuccin
-  ];
-
-  catppuccin = {
-    enable = true;
-    autoEnable = true;
-    flavor = "mocha";
-    accent = "mauve";
-    cursors.enable = true;
-    gtk.icon.enable = true;
-    swaylock.enable = true;
-    foot.enable = true;
-    btop.enable = true;
-  };
-
   programs = {
     btop = {
       enable = true;
       package = pkgs.btop-cuda;
     };
     foot.enable = true;
+    fuzzel.enable = true;
   };
 
-  gtk.enable = true;
-
-  home.pointerCursor = {
+  gtk = {
     enable = true;
-    size = 24;
-    sway.enable = true;
-    gtk.enable = true;
-    x11.enable = true;
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
   };
+
+  home.pointerCursor.sway.enable = true;
 }
