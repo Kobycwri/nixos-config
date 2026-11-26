@@ -8,8 +8,8 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
 
     cursor = {
-      package = pkgs.rose-pine-cursor; # Built into nixpkgs
-      name = "BreezeX-RosePine-Linux"; # Dark variant
+      package = pkgs.catppuccin-cursors.mochaMauve;
+      name = "catppuccin-mocha-mauve-cursors";
       size = 24;
     };
 
