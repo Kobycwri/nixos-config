@@ -47,6 +47,7 @@
 
       # Workspaces / gaps
       workspaceAutoBackAndForth = false;
+      defaultWorkspace = "workspace number 1";
       gaps = {
         inner = 0;
         outer = 0;
@@ -79,15 +80,13 @@
         "HDMI-A-1" = {
           mode = "1920x1080@60Hz";
           position = "1920,0";
+          max_render_time = "6";
         };
       };
     };
 
     # Anything not covered by the structured options:
     extraConfig = ''
-      ### Font
-      font pango:Inter 10
-
       ### Idle configuration
       exec swayidle -w \
         timeout 300 'swaylock -f' \

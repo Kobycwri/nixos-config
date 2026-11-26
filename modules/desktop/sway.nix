@@ -13,5 +13,10 @@
 #   - graphical-desktop, xwayland and polkit service plumbing
 { ... }:
 {
-  programs.sway.enable = true;
+  programs.sway = {
+    enable = true;
+    extraOptions = [
+      "--unsupported-gpu"
+    ];
+  };
 }

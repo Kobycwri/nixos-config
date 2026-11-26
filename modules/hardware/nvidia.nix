@@ -1,5 +1,5 @@
 # modules/hardware/nvidia.nix
-{ pkgs, ... }:
+{ ... }:
 {
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
