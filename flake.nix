@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,7 +30,7 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, sops-nix, ... }@inputs: {
+  outputs = { nixpkgs, home-manager, sops-nix, chaotic, ... }@inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; }; # enables flake inputs to modules
@@ -38,6 +39,7 @@
         sops-nix.nixosModules.sops
         home-manager.nixosModules.home-manager
         inputs.stylix.nixosModules.stylix
+        inputs.chaotic.nixosModules.default
       ];
     };
 
