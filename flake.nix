@@ -28,9 +28,13 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    yapfast = {
+      url = "github:yapfast/yapfast";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, sops-nix, chaotic, ... }@inputs: {
+  outputs = { nixpkgs, home-manager, sops-nix, chaotic, quadra, llm-agents, stylix, yapfast, ... }@inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; }; # enables flake inputs to modules

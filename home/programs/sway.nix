@@ -80,7 +80,7 @@
         "HDMI-A-1" = {
           mode = "1920x1080@60Hz";
           position = "1920,0";
-          max_render_time = "6";
+          max_render_time = "off";
         };
       };
     };
